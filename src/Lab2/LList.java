@@ -178,36 +178,38 @@ public class LList {
     }
 
     public int remove(int index) {
-        if (index <= 0) {
-            Node node = this.head;
-            this.head = node.next;
-            node.next = null;
-            count--;
-            return node.value;
-        } else if (index >= this.count - 1) {
-            Node prev = this.head;
-            Node node = this.head.next;
-            while (node.next != null) {
-                node = node.next;
-                prev = prev.next;
+        if (this.head != null) {
+            if (index <= 0) {
+                Node node = this.head;
+                this.head = node.next;
+                node.next = null;
+                count--;
+                return node.value;
+            } else if (index >= this.count - 1) {
+                Node prev = this.head;
+                Node node = this.head.next;
+                while (node.next != null) {
+                    node = node.next;
+                    prev = prev.next;
+                }
+                prev.next = null;
+                count--;
+                return node.value;
+            } else {
+                Node node = this.head.next;
+                Node prev = this.head;
+                int i = 1;
+                while (i != index) {
+                    node = node.next;
+                    prev = prev.next;
+                    i++;
+                }
+                prev.next = node.next;
+                node.next = null;
+                count--;
+                return node.value;
             }
-            prev.next = null;
-            count--;
-            return node.value;
-        } else {
-            Node node = this.head.next;
-            Node prev = this.head;
-            int i = 1;
-            while (i != index) {
-                node = node.next;
-                prev = prev.next;
-                i++;
-            }
-            prev.next = node.next;
-            node.next = null;
-            count--;
-            return node.value;
-        }
+        } else return 0;
     }
 
     public int set(int value, int index) {
@@ -252,28 +254,61 @@ public class LList {
     }
 
     public static Node merge(Node firstHead, Node secondHead) {
-        Node newHead = new Node(firstHead.value);
-        Node current = new Node();
-        newHead.next = current;
-        Node node = firstHead.next;
-        while (node != null) {
-            current.value = node.value;
-            current.next = new Node();
-            node = node.next;
-            current = current.next;
+        Node newHead = new Node();
+        Node curA = firstHead;
+        Node curB = secondHead;
+        if (curA.value < curB.value) {
+            newHead.value = curA.value;
+            curA = curA.next;
+        } else {
+            newHead.value = curB.value;
+            curB = curB.next;
         }
-        current.value = secondHead.value;
-        current.next = new Node();
-        node = secondHead.next;
-        current = current.next;
-        while (node.next != null) {
-            current.value = node.value;
-            current.next = new Node();
-            node = node.next;
-            current = current.next;
+        Node cur = new Node();
+        newHead.next = cur;
+        while (curA != null || curB != null) {
+            if (curA != null && curB != null) {
+                if (curA.value < curB.value) {
+                    cur.value = curA.value;
+                    curA = curA.next;
+                } else {
+                    cur.value = curB.value;
+                    curB = curB.next;
+                }
+            } else if (curA != null) {
+                cur.value = curA.value;
+                curA = curA.next;
+            } else {
+                cur.value = curB.value;
+                curB = curB.next;
+            }
+            if (curA != null || curB != null) {
+                cur.next = new Node();
+                cur = cur.next;
+            }
         }
-        current.value = node.value;
-        current.next = null;
+//        Node newHead = new Node(firstHead.value);
+//        Node current = new Node();
+//        newHead.next = current;
+//        Node node = firstHead.next;
+//        while (node != null) {
+//            current.value = node.value;
+//            current.next = new Node();
+//            node = node.next;
+//            current = current.next;
+//        }
+//        current.value = secondHead.value;
+//        current.next = new Node();
+//        node = secondHead.next;
+//        current = current.next;
+//        while (node.next != null) {
+//            current.value = node.value;
+//            current.next = new Node();
+//            node = node.next;
+//            current = current.next;
+//        }
+//        current.value = node.value;
+//        current.next = null;
         return newHead;
     }
 
