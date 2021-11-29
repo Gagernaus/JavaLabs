@@ -48,14 +48,6 @@ public class Tokens {
         }
         System.out.println(str);
         System.out.println(str1);
-        LList a = new LList();
-        a.add(1);
-        a.add(2);
-        a.add(3);
-        LList b = new LList();
-        b.add(4);
-        b.add(5);
-        b.add(6);
 
     }
 

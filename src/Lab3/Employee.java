@@ -3,10 +3,6 @@ package Lab3;
 import java.util.ArrayList;
 
 public class Employee {
-    public enum Gender {
-        MALE,
-        FEMALE
-    }
 
 
     public enum Role {
@@ -34,7 +30,7 @@ public class Employee {
     private String givenName;
     private String surName;
     private int age;
-    private Gender gender;
+    private Gender.gender gender;
     private Role role;
     private String dept;
     private String eMail;
@@ -48,6 +44,7 @@ public class Employee {
 
     }
 
+
     public String getGivenName() {
         return givenName;
     }
@@ -60,7 +57,7 @@ public class Employee {
         return age;
     }
 
-    public Employee.Gender getGender() {
+    public Gender.gender getGender() {
         return gender;
     }
 
@@ -96,6 +93,15 @@ public class Employee {
         return code;
     }
 
+    public double getSalary() {
+        return role.salary;
+    }
+
+    public static Employee ageCompare(Employee first, Employee second) {
+        if (first.age > second.age) return first;
+        else return second;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -118,7 +124,7 @@ public class Employee {
         private String givenName;
         private String surName;
         private int age;
-        private Employee.Gender gender;
+        private Gender.gender gender;
         private Employee.Role role;
         private String dept;
         private String eMail;
@@ -143,7 +149,7 @@ public class Employee {
             return this;
         }
 
-        public Builder setGender(Employee.Gender gender) {
+        public Builder setGender(Gender.gender gender) {
             this.gender = gender;
             return this;
         }
@@ -208,31 +214,31 @@ public class Employee {
 
     public static java.util.List<Employee> createShortList() {
         java.util.List<Employee> list = new ArrayList<>();
-        list.add(new Builder().setGivenName("Oleg").setSurName("Ivanov").setAge(54).setGender(Gender.MALE)
+        list.add(new Builder().setGivenName("Oleg").setSurName("Ivanov").setAge(54).setGender(Gender.gender.MALE)
                 .setRole(Role.EXECUTIVE).setDept("IT").setEMail("oleg2021-54@yndex.ru").setPhone("88005553535")
                 .setAddress("Ul.Kukushkina D3K1Kv69").setCity("Saratov").setState("Saratovskaya")
                 .setCode("12345").build());
-        list.add(new Builder().setGivenName("Vasiliy").setSurName("Pupkin").setAge(45).setGender(Gender.MALE)
+        list.add(new Builder().setGivenName("Vasiliy").setSurName("Pupkin").setAge(45).setGender(Gender.gender.MALE)
                 .setRole(Role.MANAGER).setDept("IT").setEMail("vPupkin@gmail.com").setPhone("89764697643")
                 .setAddress("Ul.Pupkina D1K1Kv1").setCity("Pupkingrad").setState("Pupkinskaya")
                 .setCode("54321").build());
-        list.add(new Builder().setGivenName("Luba").setSurName("Nelubovna").setAge(30).setGender(Gender.FEMALE)
+        list.add(new Builder().setGivenName("Luba").setSurName("Nelubovna").setAge(30).setGender(Gender.gender.FEMALE)
                 .setRole(Role.MANAGER).setDept("PR").setEMail("n0l0v3@mail.com").setPhone("86544563322")
                 .setAddress("Pr.Tapkina D45Kv15").setCity("Saratov").setState("Saratovskaya")
                 .setCode("12345").build());
-        list.add(new Builder().setGivenName("Ivan").setSurName("Kaktusov").setAge(25).setGender(Gender.MALE)
+        list.add(new Builder().setGivenName("Ivan").setSurName("Kaktusov").setAge(25).setGender(Gender.gender.MALE)
                 .setRole(Role.STAFF).setDept("IT").setEMail("koluchiy@yandex.ru").setPhone("89762344678")
                 .setAddress("Ul.Kukushkina D35Kv96").setCity("Saratov").setState("Saratovskaya")
                 .setCode("12345").build());
-        list.add(new Builder().setGivenName("Olga").setSurName("Petrova").setAge(28).setGender(Gender.FEMALE)
+        list.add(new Builder().setGivenName("Olga").setSurName("Petrova").setAge(28).setGender(Gender.gender.FEMALE)
                 .setRole(Role.STAFF).setDept("IT").setEMail("OP2882@mail.com").setPhone("89995553322")
                 .setAddress("Ul.Tapkina D3K2Kv96").setCity("Saratov").setState("Saratovskaya")
                 .setCode("12345").build());
-        list.add(new Builder().setGivenName("Nikita").setSurName("Nosov").setAge(24).setGender(Gender.MALE)
+        list.add(new Builder().setGivenName("Nikita").setSurName("Nosov").setAge(24).setGender(Gender.gender.MALE)
                 .setRole(Role.STAFF).setDept("PR").setEMail("NiNo@mail.com").setPhone("89654321145")
                 .setAddress("Ul.Nesuschestvuyuschaya D14kv54").setCity("Pipkingrad").setState("Pupkinskaya")
                 .setCode("54321").build());
-        list.add(new Builder().setGivenName("Ekaterina").setSurName("Kataeva").setAge(35).setGender(Gender.FEMALE)
+        list.add(new Builder().setGivenName("Ekaterina").setSurName("Kataeva").setAge(35).setGender(Gender.gender.FEMALE)
                 .setRole(Role.STAFF).setDept("IT").setEMail("ekatkat@gmail.com").setPhone("86753245698")
                 .setAddress("Ul.Tapkina D14K2Kv15").setCity("Saratov").setState("Saratovskaya")
                 .setCode("12345").build());

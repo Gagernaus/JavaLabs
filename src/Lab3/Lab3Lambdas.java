@@ -11,13 +11,13 @@ public class Lab3Lambdas {
         for (int i = 0; i < empl.size(); ++i) {
             System.out.println(empl.get(i).toString());
         }
-        Predicate<Employee> isFemale = employee -> employee.getGender() == Employee.Gender.FEMALE;
+        Predicate<Employee> isFemale = employee -> employee.getGender().equals(Gender.gender.FEMALE);
         Predicate<Employee> inIT = employee -> employee.getDept() == "IT";
         Predicate<Employee> inPR = employee -> employee.getDept() == "PR";
         Predicate<Employee> olderThan30 = employee -> employee.getAge() > 30;
-        Predicate<Employee> isManager = employee -> employee.getRole() == Employee.Role.MANAGER;
-        Predicate<Employee> isStaff = employee -> employee.getRole() == Employee.Role.STAFF;
-        Predicate<Employee> isExecutive = employee -> employee.getRole() == Employee.Role.EXECUTIVE;
+        Predicate<Employee> isManager = employee -> employee.getRole().equals(Employee.Role.MANAGER);
+        Predicate<Employee> isStaff = employee -> employee.getRole().equals(Employee.Role.STAFF);
+        Predicate<Employee> isExecutive = employee -> employee.getRole().equals(Employee.Role.EXECUTIVE);
         System.out.println();
         Consumer<Employee> paySalary = employee -> System.out.println("Paid salary to " + employee.toString());
         System.out.println("Consumer paying salaries");
@@ -45,7 +45,7 @@ public class Lab3Lambdas {
                         collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString())
                 .setPhone(new Random().ints(48, 59).limit(10).
                         collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString())
-                .setGender(Employee.Gender.values()[(int) (Math.random() * 2)])
+                .setGender(Gender.gender.values()[(int) (Math.random() * 2)])
                 .setRole(Employee.Role.values()[(int) (Math.random() * 3)]).build();
         System.out.println();
         System.out.println("Supplier making random Employees");
